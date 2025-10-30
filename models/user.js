@@ -15,12 +15,11 @@ const gameUserSchema = new mongoose.Schema(
     password : {
       type : String,
       required : true,
-      minLength : [10,"bro bara password dal"]
     },
     game_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Game',
-      required: true
+      required: false 
     },
     game_rank: {
       type: String,

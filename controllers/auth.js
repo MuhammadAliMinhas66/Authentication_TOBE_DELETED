@@ -4,11 +4,11 @@ import bcrypt from "bcryptjs"
 export const register = async (req,res) => {
     try{
         const {game_email,password} = req.body;
-        const gameUserExists = await gameUserModel.findOne({email});
+        const gameUserExists = await gameUserModel.findOne({game_email}); 
         if (gameUserExists){
             res.status(401).send({
                 message : "user already exists",
-             success : "false"
+             success : false 
             })
         }else{
             const salt = 10;
@@ -17,7 +17,7 @@ export const register = async (req,res) => {
             await newGameUserCredentials.save();
             res.status(200).send({
                 message : "new game user created successfully......",
-                success: "true",
+                success: true, 
                 newUserData : newGameUserCredentials
             })
         }   
