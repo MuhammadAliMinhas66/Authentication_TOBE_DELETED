@@ -1,0 +1,38 @@
+import mongoose, { Schema } from "mongoose";
+
+const gameUserSchema = new mongoose.Schema(
+  {
+    user_name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    game_email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password : {
+      type : String,
+      required : true,
+      minLength : [10,"bro bara password dal"]
+    },
+    game_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Game',
+      required: true
+    },
+    game_rank: {
+      type: String,
+    },
+    game_hours: {
+      type: Number,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const gameUserModel = mongoose.model("gameUsers", gameUserSchema);
+export default gameUserModel;
