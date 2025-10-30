@@ -1,6 +1,7 @@
 import gameUserModel from "../models/user.js";
+import bcrypt from "bcryptjs"; 
 
-// Get all game users
+
 export const getAllGameUsers = async (req, res) => {
   try {
     const gameUsers = await gameUserModel.find().populate('game_id'); 
@@ -17,15 +18,18 @@ export const getAllGameUsers = async (req, res) => {
   }
 };
 
-// Create a new game user
+
 export const createGameUser = async (req, res) => {
   try {
-    const { user_name, game_email, game_id, game_rank, game_hours,password } = req.body;  
+    const { user_name, game_email, game_id, game_rank, game_hours, password } = req.body;  
+
+    const salt = 10;
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const newGameUser = new gameUserModel({
       user_name,
       game_email,
-      password,
+      password: hashedPassword, 
       game_id,  
       game_rank,
       game_hours,

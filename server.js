@@ -31,7 +31,7 @@ const app = express();
 app.use(morgan("dev"))
 
 // apun ki port 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000; // ADDED: fallback port if env variable not set
 
 // body parser use krtey huwe
 // aur ham specify kr rhey hn 
