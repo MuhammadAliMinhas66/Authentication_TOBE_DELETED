@@ -49,8 +49,8 @@ app.use(bodyParser.json());
 app.use('/gameUsers',userRoute)
 // game routes
 app.use('/games', gameRoute)
-// register game User ROute
-app.use('/register',authRouter)
+// auth routes (register and login)
+app.use('/auth',authRouter)
 
 
 
