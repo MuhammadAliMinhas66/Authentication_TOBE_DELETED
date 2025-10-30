@@ -1,2 +1,59 @@
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+build/
+.cache/
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
 .env
-node_modules
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Lock files (optional if you switch between package managers)
+# yarn.lock
+# package-lock.json
+# pnpm-lock.yaml
+
+# Testing
+jest-html-reporters-*
+.cypress/
+playwright-report/
+test-results/
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional: local folders you don’t want tracked
+# local/
+# secrets/

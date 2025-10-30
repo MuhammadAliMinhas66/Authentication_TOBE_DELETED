@@ -12,7 +12,7 @@ export const register = async (req,res) => {
             })
         }else{
             const salt = 10;
-            const hashedPassword = await bcrypt.hash(password.salt);
+            const hashedPassword = await bcrypt.hash(password,salt);
             const newGameUserCredentials = new gameUserModel({game_email,password:hashedPassword});
             await newGameUserCredentials.save();
             res.status(200).send({
