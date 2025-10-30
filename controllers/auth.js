@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs"
 
 export const register = async (req,res) => {
     try{
-        const {game_email,password} = req.body;
+        const {user_name,game_email,password} = req.body;
         const gameUserExists = await gameUserModel.findOne({game_email});
         if (gameUserExists){
             res.status(401).send({
@@ -13,7 +13,7 @@ export const register = async (req,res) => {
         }else{
             const salt = 10;
             const hashedPassword = await bcrypt.hash(password,salt);
-            const newGameUserCredentials = new gameUserModel({game_email,password:hashedPassword});
+            const newGameUserCredentials = new gameUserModel({user_name,game_email,password:hashedPassword});
             await newGameUserCredentials.save();
             res.status(200).send({
                 message : "new game user created successfully......",
