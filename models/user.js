@@ -11,9 +11,14 @@ const gameUserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    password : {
-      type : String,
-      required : true,
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin', 'moderator'],
+      default: 'user'
     },
     game_id: {
       type: mongoose.Schema.Types.ObjectId,
