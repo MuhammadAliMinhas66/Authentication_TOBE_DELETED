@@ -34,12 +34,14 @@ export const register = async (req, res) => {
         
         // JWT token generate kr rhey hn (userId, email aur role include kia)
         const token = jwt.sign(
+            // payload ha jani
             {
                 userId: newGameUserCredentials._id,
                 email: newGameUserCredentials.game_email,
                 role: newGameUserCredentials.role
             },
-            process.env.JWT_SECRET, // .env file se secret key le rhey hn
+            // second argument ha SECRET KEY KA
+            process.env.JWT_SECRET, 
             { expiresIn: '24h' } // Token 24 ghante baad expire hoga
         );
         
@@ -100,7 +102,7 @@ export const login = async (req, res) => {
                 email: user.game_email,
                 role: user.role // User ka role token mein store kia
             },
-            process.env.JWT_SECRET, // Secret key .env se
+            process.env.JWT_SECRET,
             { expiresIn: '24h' } // Token 24 ghante k liye valid
         );
         
